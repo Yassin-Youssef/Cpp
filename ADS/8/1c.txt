@@ -1,0 +1,16 @@
+/*Preprocessing function (Θ(n + k))*/
+function preprocess(arr, n, k):
+    count = new array of size (k+1) initialized to 0
+    prefix = new array of size (k+1) initialized to 0   
+    /*count occurrences of each number*/
+    for i = 0 to n-1:
+        count[arr[i]] += 1
+    /*build prefix sum array*/
+    prefix[0] = count[0]
+    for i = 1 to k:
+        prefix[i] = prefix[i-1] + count[i]
+/*query function (O(1) time)*/
+function countInRange(a, b):
+    if a == 0:
+        return prefix[b]
+    return prefix[b] - prefix[a - 1]
