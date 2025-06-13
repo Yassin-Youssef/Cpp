@@ -1,0 +1,25 @@
+function sortedListToBST(head):
+    if head is null:
+        return null
+
+        mid = findMiddle(head)
+    
+    root = new TreeNode(mid.data)
+    root.left = sortedListToBST(head)
+    root.right = sortedListToBST(mid.next)
+
+    return root
+
+function findMiddle(head):
+    slow = head
+    fast = head
+    prev = null
+
+    while fast is not null and fast.next is not null:
+        prev = slow
+        slow = slow.next
+        fast = fast.next.next
+    
+    if prev is not null:
+        prev.next = null
+    return slow

@@ -1,0 +1,9 @@
+function reverseLinkedList(head):
+    prev = null
+    current = head
+    while current is not null:
+        nextNode = current.next
+        current.next = prev
+        prev = current
+        current = nextNode
+    return prev                       

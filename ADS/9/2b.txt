@@ -1,0 +1,17 @@
+function convertBSTToSortedList(root):
+    previous = null
+    head = null
+
+    function inorderTraversal(node):
+        if node is null:
+            return
+        inorderTraversal(node.left)
+        if previous is null:
+            head = node
+        else:
+            previous.right = node
+        node.left = null
+        previous = node
+        inorderTraversal(node.right)
+    inorderTraversal(root)
+    return head
